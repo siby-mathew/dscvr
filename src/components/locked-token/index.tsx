@@ -72,7 +72,7 @@ export const LockedToken: React.FC<
             <Button
               onClick={onClickHandler}
               display={"inline-flex"}
-              isDisabled={isClaimable}
+              isDisabled={!isClaimable}
               justifyContent={"center"}
               alignItems={"center"}
             >
