@@ -8,7 +8,7 @@ import { ClipboardText } from "../clipboard-text";
 import { formatDate } from "../../utils/formatDate";
 import { formatNumber, NumberFormatType } from "../../utils/formatTime";
 import { Token } from "../../utils/token";
-// import { useWeb3React } from "../../hooks/useWeb3React";
+import { useWeb3React } from "../../hooks/useWeb3React";
 import { StatusModal } from "../status-modal";
 import dayjs from "dayjs";
 export const LockedToken: React.FC<
@@ -23,14 +23,14 @@ export const LockedToken: React.FC<
   const endtime = account.vestingStartTime.add(account.frequency);
 
   const start = account.vestingStartTime;
-  // const { publicKey } = useWeb3React();
+  const { publicKey } = useWeb3React();
   const isClaimed = new BN(account.totalClaimedAmount).gt(new BN(0));
   const isUnlocked = dayjs().isAfter(dayjs.unix(endtime));
   console.log(isUnlocked);
-  // const isClaimable =
-  //   isUnlocked &&
-  //   !isClaimed &&
-  //   publicKey?.toString() === account.creator.toString();
+  const isClaimable =
+    isUnlocked &&
+    !isClaimed &&
+    publicKey?.toString() === account.creator.toString();
 
   return (
     <Card
@@ -72,6 +72,7 @@ export const LockedToken: React.FC<
             <Button
               onClick={onClickHandler}
               display={"inline-flex"}
+              isDisabled={isClaimable}
               justifyContent={"center"}
               alignItems={"center"}
             >
