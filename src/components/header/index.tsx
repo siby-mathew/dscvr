@@ -99,7 +99,7 @@ export const Header: React.FC = () => {
           <Menu>
             {wallet?.adapter.name && (
               <Button onClick={() => connect()}>
-                Connect {wallet?.adapter.name}
+                {`Connect ${wallet?.adapter.name}`}
               </Button>
             )}
             <MenuButton as={Button} rightIcon={<GoChevronDown />}>
