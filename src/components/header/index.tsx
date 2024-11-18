@@ -71,8 +71,14 @@ const Search: React.FC = () => {
   );
 };
 export const Header: React.FC = () => {
-  const { isConnected, connecting, disconnect, conectWallet, connectors } =
-    useWalletConnection();
+  const {
+    isConnected,
+    connecting,
+    disconnect,
+    conectWallet,
+    connectors,
+    connect,
+  } = useWalletConnection();
   const { publicKey } = useWallet();
 
   return (
