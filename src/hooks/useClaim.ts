@@ -51,14 +51,15 @@ export const useClaim = () => {
               escrowToken,
               program: new PublicKey(PROGRAM_ID),
               escrow: escrow,
-              eventAuthority: "4sVWZLK2JLbT2bUDHtSXLDuJrqy8Suef5vfkVgMmt8Py",
+              eventAuthority: "AqUDk3wybxjZujrNbKmjr2YTUZ8RA1a1nyGgs1zSmvTG",
               tokenProgram: TOKEN_PROGRAM_ID,
             })
             .rpc();
           setIsLoading(false);
           setMeesage("Completed");
           setTxn(res ?? "uu");
-        } catch {
+        } catch (er) {
+          console.log(er);
           setMeesage("failed");
           setIsLoading(false);
           setTxn("");

@@ -26,7 +26,7 @@ export const LockedToken: React.FC<
   const { publicKey } = useWeb3React();
   const isClaimed = new BN(account.totalClaimedAmount).gt(new BN(0));
   const isUnlocked = dayjs().isAfter(dayjs.unix(endtime));
-  console.log(isUnlocked);
+
   const isClaimable =
     isUnlocked &&
     !isClaimed &&
