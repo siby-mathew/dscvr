@@ -1,9 +1,9 @@
 import { useEffect, createContext, useState } from "react";
 import {
   createCanvasClient,
-  type CanvasInterface,
   type CanvasClient,
-} from "@dscvr-one/canvas-client-sdk";
+  type CanvasInterface,
+} from "../libs/canvas";
 
 import { registerCanvasWallet } from "@dscvr-one/canvas-wallet-adapter";
 
@@ -19,7 +19,6 @@ export const CanvasProvider = ({ children }: { children: React.ReactNode }) => {
   const [canvasContext, setCanvasContext] = useState<CanvasContextType>({});
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-
   const initialize = async (canvasClient: any) => {
     registerCanvasWallet(canvasClient);
 
