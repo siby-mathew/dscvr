@@ -1,4 +1,4 @@
-import { useEffect, createContext, useState } from "react";
+import { useEffect, createContext, useState, useContext } from "react";
 import {
   createCanvasClient,
   type CanvasClient,
@@ -56,14 +56,14 @@ export const CanvasProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-// export const useCanvasContext = () => {
-//   const context = useContext(CanvasContext);
-//   if (context === undefined) {
-//     throw new Error(
-//       "useCanvasClientContext must be used within a CanvasClientProvider"
-//     );
-//   }
-//   return context;
-// };
+export const useCanvasContext = () => {
+  const context = useContext(CanvasContext);
+  if (context === undefined) {
+    throw new Error(
+      "useCanvasClientContext must be used within a CanvasClientProvider"
+    );
+  }
+  return context;
+};
 
-// export default CanvasContext;
+export default CanvasContext;

@@ -10,6 +10,7 @@ import {
   ModalProps,
 } from "@chakra-ui/react";
 import React from "react";
+import { useCanvasContext } from "../../provider/CanvasProvider";
 type StatusModalProps = Pick<ModalProps, "isOpen" | "onClose"> & {
   type: "SUCCESS" | "ERROR";
   txn?: string;
@@ -22,6 +23,7 @@ export const StatusModal: React.FC<StatusModalProps> = ({
   message = "",
   txn = "",
 }) => {
+  const canvasContext = useCanvasContext();
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -32,6 +34,17 @@ export const StatusModal: React.FC<StatusModalProps> = ({
           <Box textAlign={"center"} pb={3}>
             {message}
           </Box>
+          {txn && (
+            <Button
+              onClick={() => {
+                canvasContext.client?.openLink(
+                  `https://explorer.solana.com/tx/${txn}?cluster=devnet`
+                );
+              }}
+            >
+              View Transaction
+            </Button>
+          )}
           {txn && (
             <Box>
               <Button
