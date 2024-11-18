@@ -20,7 +20,7 @@ import { shrinkText } from "../../utils/shrinkText";
 import { IoSearch } from "react-icons/io5";
 import { useNavigate } from "@tanstack/react-router";
 import { useMintAddress } from "../../hooks/useMintAddress";
-
+import { isIframeContext } from "../../libs/canvas";
 const Search: React.FC = () => {
   const [query, setQuery] = useState<string>();
   const mintAddress = useMintAddress();
@@ -87,7 +87,7 @@ export const Header: React.FC = () => {
       <Flex justifyContent={"space-between"}>
         <Flex>
           <Text fontSize={20} as="h1" fontWeight={"bold"}>
-            Jupiter Lock
+            Jupiter Lock {isIframeContext() ? "- DSCVR" : ""}
           </Text>
         </Flex>
         <Flex>
