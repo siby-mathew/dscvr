@@ -110,7 +110,7 @@ export const Header: React.FC = () => {
                       key={connector.adapter.name}
                       onClick={() => {
                         conectWallet(connector.adapter.name);
-                        connect();
+                        setTimeout(() => connect());
                       }}
                     >
                       {connector.adapter.name}
