@@ -71,25 +71,12 @@ const Search: React.FC = () => {
   );
 };
 export const Header: React.FC = () => {
-  const {
-    isConnected,
-    connecting,
-    disconnect,
-    conectWallet,
-    connectors,
-    connect,
-  } = useWalletConnection();
+  const { isConnected, connecting, disconnect, conectWallet, connectors } =
+    useWalletConnection();
   const { publicKey } = useWallet();
 
   return (
     <Box as="header" py={2} mb={3}>
-      <button
-        onClick={() => {
-          connect();
-        }}
-      >
-        Connect
-      </button>
       <Flex justifyContent={"space-between"}>
         <Flex>
           <Text fontSize={20} as="h1" fontWeight={"bold"}>
@@ -117,6 +104,7 @@ export const Header: React.FC = () => {
                       key={connector.adapter.name}
                       onClick={() => {
                         conectWallet(connector.adapter.name);
+                        connect();
                       }}
                     >
                       {connector.adapter.name}

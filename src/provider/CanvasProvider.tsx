@@ -49,11 +49,7 @@ export const CanvasProvider = ({ children }: { children: React.ReactNode }) => {
     };
   }, []);
 
-  return (
-    <CanvasContext.Provider value={canvasContext}>
-      {children}
-    </CanvasContext.Provider>
-  );
+  return <div>{children}</div>;
 };
 
 // export const useCanvasContext = () => {
