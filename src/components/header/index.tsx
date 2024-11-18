@@ -78,6 +78,7 @@ export const Header: React.FC = () => {
     conectWallet,
     connectors,
     connect,
+    wallet,
   } = useWalletConnection();
   const { publicKey } = useWallet();
 
@@ -96,6 +97,11 @@ export const Header: React.FC = () => {
         </Flex>
         <Flex>
           <Menu>
+            {wallet?.adapter.name && (
+              <Button onClick={() => connect()}>
+                Connect {wallet?.adapter.name}
+              </Button>
+            )}
             <MenuButton as={Button} rightIcon={<GoChevronDown />}>
               {isConnected && publicKey
                 ? shrinkText({ string: publicKey.toString() })
@@ -110,7 +116,6 @@ export const Header: React.FC = () => {
                       key={connector.adapter.name}
                       onClick={() => {
                         conectWallet(connector.adapter.name);
-                        setTimeout(() => connect(), 2000);
                       }}
                     >
                       {connector.adapter.name}
