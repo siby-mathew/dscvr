@@ -20,7 +20,7 @@ import { shrinkText } from "../../utils/shrinkText";
 import { IoSearch } from "react-icons/io5";
 import { useNavigate } from "@tanstack/react-router";
 import { useMintAddress } from "../../hooks/useMintAddress";
-import { isIframeContext } from "../../libs/canvas";
+import { isIframeContext } from "@dscvr-one/canvas-client-sdk";
 const Search: React.FC = () => {
   const [query, setQuery] = useState<string>();
   const mintAddress = useMintAddress();
