@@ -1,9 +1,5 @@
 import { useEffect, createContext, useState, useContext } from "react";
-import {
-  createCanvasClient,
-  type CanvasClient,
-  type CanvasInterface,
-} from "../libs/canvas";
+import { CanvasInterface, CanvasClient } from "@dscvr-one/canvas-client-sdk";
 
 import { registerCanvasWallet } from "@dscvr-one/canvas-wallet-adapter";
 
@@ -38,7 +34,7 @@ export const CanvasProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   useEffect(() => {
-    const client = createCanvasClient();
+    const client = new CanvasClient();
     setCanvasContext({ client: client });
 
     if (!client) return;
