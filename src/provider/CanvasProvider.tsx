@@ -1,5 +1,9 @@
 import { useEffect, createContext, useState, useContext } from "react";
-import { CanvasInterface, CanvasClient } from "@dscvr-one/canvas-client-sdk";
+import {
+  CanvasInterface,
+  CanvasClient,
+  isIframeContext,
+} from "@dscvr-one/canvas-client-sdk";
 
 import { registerCanvasWallet } from "@dscvr-one/canvas-wallet-adapter";
 
@@ -34,10 +38,10 @@ export const CanvasProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   useEffect(() => {
-    const client = new CanvasClient();
-    setCanvasContext({ client: client });
+    const client = isIframeContext() ? new CanvasClient() : null;
 
     if (!client) return;
+    setCanvasContext({ client: client });
     initialize(client);
 
     return () => {
